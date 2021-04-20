@@ -14,7 +14,7 @@ namespace final_project
         public:
             file_not_found_exception(const std::string& message);
 
-            const char* what() const noexcept override;
+            const char* what() const throw();
         private:
             std::string _M_message;
     };
@@ -25,7 +25,7 @@ namespace final_project
         public: 
             invalid_regex_exception(const std::string& message);
 
-            const char* what() const noexcept override;
+            const char* what() const throw();
         private:
             std::string _M_message;
     };

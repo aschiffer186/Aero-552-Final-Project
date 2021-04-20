@@ -10,7 +10,7 @@ namespace final_project
 
     }
 
-    const char* file_not_found_exception::what() const noexcept
+    const char* file_not_found_exception::what() const throw()
     {
         return _M_message.c_str();
     }
@@ -21,7 +21,7 @@ namespace final_project
 
     }
 
-    const char* invalid_regex_exception::what() const noexcept 
+    const char* invalid_regex_exception::what() const throw() 
     {
         return _M_message.c_str();
     }
