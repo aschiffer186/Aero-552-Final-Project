@@ -3,6 +3,7 @@ project(FINAL_PROJECT)
 
 set(CXX_STANDARD 14)
 set(CXX_STANDARD_REQUIRED True)
+add_compile_options(-std=c++11)
 
 add_subdirectory(src)
 
