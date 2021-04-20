@@ -4,8 +4,10 @@
 #include <exception>
 #include <string>
 
-namespace final_project::exceptions
+namespace final_project
 {
+    namespace exceptions 
+    {
     //Thrown when the compiler cannot find the specified file.
     struct file_not_found_exception : public std::exception
     {
@@ -27,6 +29,7 @@ namespace final_project::exceptions
         private:
             std::string _M_message;
     };
+    }
 } // namespace final_project::exceptions
 
 
