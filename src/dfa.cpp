@@ -89,7 +89,7 @@ namespace final_project
                         T[q][c] = t;
                         auto it2 = std::find_if(Q.begin(), Q.end(), [&](const std::set<state_t>& curr)
                         {
-                            return std::equal(curr.begin(), curr.end(), t.begin(), t.end());
+                            return std::equal(curr.begin(), curr.end(), t.begin());
                         });
                         if(it2 == Q.end())
                         {
@@ -122,7 +122,7 @@ namespace final_project
                     auto state_set = pair.second;
                     auto it2 = std::find_if(Q.begin(), Q.end(), [&](const std::set<state_t>& curr)
                     {
-                        return std::equal(curr.begin(), curr.end(), state_set.begin(), state_set.end());
+                        return std::equal(curr.begin(), curr.end(), state_set.begin());
                     });
                     state_t state = it2 - Q.begin();
                     dfa_row[pair.first] = state;
