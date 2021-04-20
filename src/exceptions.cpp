@@ -1,6 +1,6 @@
 #include "exception/exceptions.hh"
 
-namespace final_project::exceptions
+namespace final_project
 {
     namespace exceptions 
     {
