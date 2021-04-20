@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <ostream>
 #include <set>
+#include <limits>
 
 #define NFA_TRANSITION(c, ...) {c, {__VA_ARGS__}}
 
