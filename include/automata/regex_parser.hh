@@ -49,7 +49,7 @@ namespace final_project::regex
             //@effects the input stream attached to the class 
             //         will be at the end of the text it is 
             //         attached to 
-            std::vector<std::vector<char>> parse();
+            std::vector<std::pair<std::string, std::vector<char>>> parse();
         private:
             //Preprocesses a single regular expression to make it 
             //easier to parse. Inserts a concatenation operator (?) 

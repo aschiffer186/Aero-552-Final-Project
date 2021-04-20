@@ -6,6 +6,8 @@ set(CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(src)
 
-#enable_testing()
 add_subdirectory(tests)
 
+add_executable(Final_Project src/main)
+target_include_directories(Final_Project PRIVATE ${FINAL_PROJECT_SOURCE_DIR}/include/)
+target_link_libraries(Final_Project PRIVATE Compiler)

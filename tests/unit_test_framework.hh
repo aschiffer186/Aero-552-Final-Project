@@ -52,7 +52,7 @@ typedef std::vector<test_t> test_list_t;
         bool passed = true;\
         std::cout << "Begin " << test_name << std::endl;\
         std::cout << "Test description: " << #desc << std::endl;\
-        test_results[test_name] = false;\
+        test_results[test_name] = true;\
         try{\
 
 

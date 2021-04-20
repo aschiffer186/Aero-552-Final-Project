@@ -1,2 +1,2 @@
-a
-ab
+terminals: lllll
+oken_name: regex

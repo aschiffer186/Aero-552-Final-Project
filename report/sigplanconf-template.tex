@@ -1,0 +1,203 @@
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[preprint]{sigplanconf}
+
+% The following \documentclass options may be useful:
+
+% preprint       Remove this option only once the paper is in final form.
+%  9pt           Set paper in  9-point type (instead of default 10-point)
+% 11pt           Set paper in 11-point type (instead of default 10-point).
+% numbers        Produce numeric citations with natbib (instead of default author/year).
+% authorversion  Prepare an author version, with appropriate copyright-space text.
+
+\usepackage{amsmath}
+
+\newcommand{\cL}{{\cal L}}
+
+\begin{document}
+
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+\conferenceinfo{CONF'yy}{Month d--d, 20yy, City, ST, Country}
+\copyrightyear{2021}
+\copyrightdata{978-1-nnnn-nnnn-n/yy/mm}\reprintprice{\$15.00}
+\copyrightdoi{nnnnnnn.nnnnnnn}
+
+% For compatibility with auto-generated ACM eRights management
+% instructions, the following alternate commands are also supported.
+%\CopyrightYear{2016}
+%\conferenceinfo{CONF'yy,}{Month d--d, 20yy, City, ST, Country}
+%\isbn{978-1-nnnn-nnnn-n/yy/mm}\acmPrice{\$15.00}
+%\doi{http://dx.doi.org/10.1145/nnnnnnn.nnnnnnn}
+
+% Uncomment the publication rights used.
+%\setcopyright{acmcopyright}
+\setcopyright{acmlicensed}  % default
+%\setcopyright{rightsretained}
+
+\titlebanner{banner above paper title}        % These are ignored unless
+\preprintfooter{short description of paper}   % 'preprint' option specified.
+
+\title{Aero 552 Final Report}
+%\subtitle{Subtitle Text, if any\titlenote{with optional subtitle note}}
+
+\authorinfo{Alex Schiffer}
+           {University of Michigan}
+           {aschiffe@umich.edu}
+
+\maketitle
+
+\begin{abstract}
+This is the text of the abstract.
+\end{abstract}
+
+% 2012 ACM Computing Classification System (CSS) concepts
+% Generate at 'http://dl.acm.org/ccs/ccs.cfm'.
+\begin{CCSXML}
+<ccs2012>
+<concept>
+<concept_id>10011007.10011006.10011008</concept_id>
+<concept_desc>Software and its engineering~General programming languages</concept_desc>
+<concept_significance>500</concept_significance>
+</concept>
+<concept>
+<concept_id>10003752.10010124.10010138.10010143</concept_id>
+<concept_desc>Theory of computation~Program analysis</concept_desc>
+<concept_significance>300</concept_significance>
+</concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Software and its engineering~General programming languages}
+\ccsdesc[300]{Theory of computation~Program analysis}
+% end generated code
+
+% Legacy 1998 ACM Computing Classification System categories are also
+% supported, but not recommended.
+%\category{CR-number}{subcategory}{third-level}[fourth-level]
+%\category{D.3.0}{Programming Languages}{General}
+%\category{F.3.2}{Logics and Meanings of Programs}{Semantics of Programming Languages}[Program analysis]
+
+\keywords
+keyword1, keyword2
+
+\section{Introduction}
+
+The text of the paper begins here.
+
+\section{Theory}
+\subsection{Deterministic Finite Automata}
+Efficient lexing and parsing both depend on derministic finite automata (DFA). A DFA is a 5-tuple, \{$Q$, $\Sigma$, $\delta$, 
+$s$, $F$\} where
+\begin{itemize}
+    \item $Q$ is a finite collection of states 
+    \item $\Sigma$ is a finite collection of symbols that the DFA can recognize called its alphabet
+    \item $\delta: Q \times \Sigma \rightarrow Q$ is the state transition fuction of the DFA
+    \item $s \subset Q$ is the initial state of the DFA
+    \item $F \subset Q$ is the set of accepting states of the DFA
+\end{itemize}
+The DFA works by its current state $s_i$ and and current input symbol $c$. The DFA is initially in its initial state. To select 
+the next state, it calls the state transition function on $s_i$ and $c$, $\delta(s_i, c)$. It repeats this process until either 
+there are no more input symbols are there is no valid transition. If there are no more input symbols, the DFA accepts the input 
+and optionally performs some action according to the input state. If the DFA is not in an accepting state or there is no valid 
+transition, the DFA reports an error. The set of input symbols that can be recognized by a DFA is called its language. 
+\subsection{Lexing}
+Lexing is the first phase of compilation; it involves splitting an input stream into tokens based on a set of regular expressions.
+\subsubsection{Regular Expressions}
+A regular expression is a compact way to represent the language represented by a DFA. Regular expressions are constructed 
+from a few simple operations. 
+\begin{table}[h!]
+    \begin{tabular}{|c|c|}
+        \hline 
+        Regular Expression & Language\\
+        a & L(a) = \{a\}\\
+        \hline
+        $\varepsilon$ & L($\varepsilon$) = \{ \}\\
+        \hline
+        ab & L(ab) = \{$\alpha\beta | \alpha \in L(a), \beta\in L(b)$\}\\
+        \hline 
+        $a|b$ & L($a|b$) = ${L(a|b) = L(a) \cup L(b)}$\\
+        \hline
+        a* & L(a*) = $\cup_{i\geq 0}L(a)^i$\\
+        \hline
+    \end{tabular}
+\end{table}\\
+The lexer uses a set of regular expressions to construct a DFA that can be used to split an input string into tokens. The lexer 
+uses the following algorithm. 
+\begin{verbatim}
+    si <- s0
+    while (there are more input characters)
+        c <- next token 
+        si = delta(si, c)
+        if (si == error)
+            print error 
+        else 
+            advance
+        end if 
+    end while 
+    if (si == accept)
+        print accept 
+    else 
+        print error
+\end{verbatim}
+The lexer uses Thompson's construction and the powerset construction to convert a set of 
+regular expressions to a DFA. 
+\subsection{Thompons's Construction and Non-deterministic Finite Automata}
+The first step in creating a DFA from a set of regular expressions is to create a non-deterministic finite automaton (NFA). 
+Like a DFA, an NFA s a 5-tuple \{$Q$, $\Sigma$, $\delta$, 
+$s$, $F$\} where
+\begin{itemize}
+    \item $Q$ is a finite collection of states 
+    \item $\Sigma$ is a finite collection of symbols that the DFA can recognize called its alphabet
+    \item $\delta: Q \times \Sigma \rightarrow Q$ is the state transition fuction of the DFA
+    \item $s \subset Q$ is the initial state of the DFA
+    \item $F \subset Q$ is the set of accepting states of the DFA
+\end{itemize}
+However, unlike a DFA, an NFA is allowed to have non-deterministic transitions. This means 
+\appendix
+\section{Appendix Title}
+
+This is the text of the appendix, if you need one.
+
+\acks
+
+Acknowledgments, if needed.
+
+% The 'abbrvnat' bibliography style is recommended.
+
+\bibliographystyle{abbrvnat}
+
+% The bibliography should be embedded for final submission.
+
+\begin{thebibliography}{}
+\softraggedright
+
+\bibitem[Smith et~al.(2009)Smith, Jones]{smith02}
+P. Q. Smith, and X. Y. Jones. ...reference text...
+
+\end{thebibliography}
+
+
+\end{document}

@@ -13,14 +13,19 @@ namespace final_project::regex
 
     }
 
-    std::vector<std::vector<char>> regex_parser::parse()
+    std::vector<std::pair<std::string, std::vector<char>>> regex_parser::parse()
     {
         if(!_M_in.good())
             throw std::range_error("Input stream is in invalid state.");
         std::string line;
-        std::vector<std::vector<char>> regex;
+        std::vector<std::pair<std::string, std::vector<char>>> regex;
         while(getline(_M_in, line))
-            regex.push_back(parse_regex(line));
+        {   
+            size_t colon_index = line.find(":");
+            std::string label = line.substr(0, colon_index);
+            std::string r = line.substr(line.rfind(" ") + 1);
+            regex.push_back(std::make_pair(label, parse_regex(r)));
+        }
         return regex;
     }
 
