@@ -211,7 +211,7 @@ namespace final_project
         {
             if(lhs._M_lhs != other._M_lhs)
                 return false;
-            if(!std::equal(lhs._M_rhs.begin(), lhs._M_rhs.end(), other._M_rhs.begin(), other._M_rhs.end()))
+            if(!std::equal(lhs._M_rhs.begin(), lhs._M_rhs.end(), other._M_rhs.begin()))
                 return false;
             return lhs._M_pointer == other._M_pointer;
         }
