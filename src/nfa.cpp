@@ -4,8 +4,10 @@
 #include <algorithm>
 #include <iostream>
 
-namespace final_project::automata
+namespace final_project
 {
+    namespace automata
+    {
     inline bool is_operator(char c)
     { 
         return (c == '|') || (c == '?') || (c =='*');
@@ -167,6 +169,7 @@ namespace final_project::automata
             n._M_accepeting_state_labels[n._M_accepting_states.back()] = label;
         }
         return n;
+    }
     }
 }
 

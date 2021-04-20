@@ -5,8 +5,10 @@
 #include <stack>
 #include <regex>
 
-namespace final_project::regex
+namespace final_project
 {
+    namespace regex 
+    {
     regex_parser::regex_parser(std::istream& in) noexcept
         : _M_in(in)
     {
@@ -152,5 +154,6 @@ namespace final_project::regex
             }
         }
         regex = all_replaced;
+    }
     }
 } // namespace final_project::regex
