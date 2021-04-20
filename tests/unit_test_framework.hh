@@ -67,10 +67,12 @@ typedef std::vector<test_t> test_list_t;
             std::cout << "Exception during test " << test_name << std::endl;\
             std::cout << "Exception message: " << ex.what() << std::endl;\
             std::cout << test_name << " failed!" << std::endl;\
+            passed = false;\
         } catch (...) {\
             std::cout << "Unknown exception thrown during test: " << test_name << std::endl;\
             std::cout << test_name << " failed!" << std::endl;\
             ++num_failed;\
+            passed = false;\
         }\
         std::cout << std::endl;\
     }\
