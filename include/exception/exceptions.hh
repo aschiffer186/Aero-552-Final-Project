@@ -16,7 +16,7 @@ namespace final_project
 
             const char* what() const throw();
 
-            ~file_not_found_exception() = default;
+            ~file_not_found_exception() throw() = default;
         private:
             std::string _M_message;
     };
@@ -29,7 +29,7 @@ namespace final_project
 
             const char* what() const throw();
 
-            ~invalid_regex_exception() = default;
+            ~invalid_regex_exception() throw()=  default;
         private:
             std::string _M_message;
     };
