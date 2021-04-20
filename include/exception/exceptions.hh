@@ -15,6 +15,8 @@ namespace final_project
             file_not_found_exception(const std::string& message);
 
             const char* what() const throw();
+
+            ~file_not_found_exception() = default;
         private:
             std::string _M_message;
     };
@@ -26,6 +28,8 @@ namespace final_project
             invalid_regex_exception(const std::string& message);
 
             const char* what() const throw();
+
+            ~invalid_regex_exception() = default;
         private:
             std::string _M_message;
     };
