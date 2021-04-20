@@ -2,6 +2,8 @@
 
 namespace final_project::exceptions
 {
+    namespace exceptions 
+    {
     file_not_found_exception::file_not_found_exception(const std::string& message) 
         : _M_message(message)
     {
@@ -22,5 +24,6 @@ namespace final_project::exceptions
     const char* invalid_regex_exception::what() const noexcept 
     {
         return _M_message.c_str();
+    }
     }
 } // namespace final_project::exceptions
