@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  21 APR 2021 13:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  21 APR 2021 19:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -254,52 +254,57 @@ Underfull \hbox (badness 10000) in paragraph at lines 354--367
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--476
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--481
 
  []
 
@@ -310,17 +315,17 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Underfull \hbox (badness 1472) in paragraph at lines 485--486
+Underfull \hbox (badness 1472) in paragraph at lines 490--491
 []\OT1/ptm/m/n/9 Cernera, G., 'Con-vert-ing Reg-u-lar Ex-pres-sions to Post- 
  []
 
 
-Underfull \hbox (badness 2469) in paragraph at lines 485--486
+Underfull \hbox (badness 2469) in paragraph at lines 490--491
 \OT1/ptm/m/n/9 expressions-to-postfix-notation-with-the-shunting-yard- 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 493--494
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
 []\OT1/ptm/m/n/9 Jackson, S., 'LALR(1) Pars-ing' Avail-able: 
  []
 
@@ -356,13 +361,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  3558 strings out of 480994
  47187 string characters out of 5916032
- 319406 words of memory out of 5000000
+ 320406 words of memory out of 5000000
  19067 multiletter control sequences out of 15000+600000
  554223 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  33i,10n,38p,324b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.pdf" (6 pages, 141011 bytes).
+Output written on "c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.pdf" (6 pages, 141273 bytes).
 PDF statistics:
  68 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream

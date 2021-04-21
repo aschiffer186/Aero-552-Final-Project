@@ -77,11 +77,37 @@ namespace final_project
                 lexer_cpp_out << "\n     tl" << i << ":";
                 lexer_cpp_out << "\n     {";
                 lexer_cpp_out << "\n          char c = next_character();";
+                if (i == 0)
+                {
+                    lexer_cpp_out << "    if(isspace(c))";
+                    lexer_cpp_out << "\n  {";
+                    lexer_cpp_out << "\n        advance();";
+                    lexer_cpp_out << "\n        goto tl0;";
+                    lexer_cpp_out << "\n   }";
+                }
+                //Check if we have seen a space that endicates the end of this token 
+                //If so, we need to either make a token instaed of looking for more characters
+                else if (std::find(accepting_states.begin(), accepting_states.end(), static_cast<automata::state_t>(i)) != accepting_states.end())
+                {
+                    lexer_cpp_out << "\n            if(isspace(c))";
+                    lexer_cpp_out << "\n                  return make_token(token_type::tl_" << accepting_labels.find(i)->second << ", value);";
+                }
+                else
+                {
+                    lexer_cpp_out << "\n          if(isspace(c))";
+                    lexer_cpp_out << "\n           {";
+                    lexer_cpp_out << "\n                   value += c;";
+                    lexer_cpp_out << "\n                   advance();";
+                    lexer_cpp_out << "\n                   return make_token(token_type::tl_ERROR , value);";
+                    lexer_cpp_out << "\n           }";
+                }
                 //Get transition transitions form current character
                 const auto& row = transitions[i];
                 //Print goto statements for transition
                 for(auto it = row.begin(); it != row.end(); ++it)
                 {
+                    if(it->second == automata::ACCEPT) //Handled below
+                        continue;
                     if (it == row.begin())
                     {
                         if (it->first == automata::EPSILON)
@@ -112,7 +138,11 @@ namespace final_project
                 else
                 {
                     lexer_cpp_out << "\n           else";
+                    lexer_cpp_out << "\n           {";
+                    lexer_cpp_out << "\n                   value += c;";
+                    lexer_cpp_out << "\n                   advance();";
                     lexer_cpp_out << "\n                   return make_token(token_type::tl_ERROR , value);";
+                    lexer_cpp_out << "\n           }";
                 }
                 lexer_cpp_out << "\n     }";
             } 

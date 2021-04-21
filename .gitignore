@@ -1,6 +1,6 @@
 *.exe
-!nfa_test.exe
 *.vscode
 *.pdf
 *.zip
 build/
+executable/

@@ -31,20 +31,200 @@ namespace lexer
      std::string value = "";
      tl0:
      {
-          char c = next_character();
-         if(c == '4')
+          char c = next_character();    if(isspace(c))
+  {
+        advance();
+        goto tl0;
+   }
+         if(c == '5')
              {
                   value += c;
                   advance();
                   goto tl9;
              }
-         else if(c == '3')
+         else if(c == '4')
              {
                   value += c;
                   advance();
                   goto tl8;
              }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl1;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '-')
+             {
+                  value += c;
+                  advance();
+                  goto tl3;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '+')
+             {
+                  value += c;
+                  advance();
+                  goto tl2;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
          else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl1:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl14;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '-')
+             {
+                  value += c;
+                  advance();
+                  goto tl3;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '+')
+             {
+                  value += c;
+                  advance();
+                  goto tl2;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl2:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
              {
                   value += c;
                   advance();
@@ -54,9 +234,27 @@ namespace lexer
              {
                   value += c;
                   advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
                   goto tl6;
              }
-         else if(c == '-')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl15;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -66,113 +264,157 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl13;
-             }
-         else if(c == '7')
-             {
-                  value += c;
-                  advance();
                   goto tl12;
-             }
-         else if(c == '\\')
-             {
-                  value += c;
-                  advance();
-                  goto tl15;
-             }
-         else if(c == '0')
-             {
-                  value += c;
-                  advance();
-                  goto tl5;
-             }
-         else if(c == '%')
-             {
-                  value += c;
-                  advance();
-                  goto tl1;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl14;
+                  goto tl13;
              }
-         else if(c == '+')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl3;
+                  goto tl8;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl11;
-             }
-         else if(c == '*')
-             {
-                  value += c;
-                  advance();
-                  goto tl2;
+                  goto tl10;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl10;
+                  goto tl9;
              }
            else
+           {
+                   value += c;
+                   advance();
                    return make_token(token_type::tl_ERROR , value);
-     }
-     tl1:
-     {
-          char c = next_character();
-                  return make_token(token_type::tl_modulo, value);
-     }
-     tl2:
-     {
-          char c = next_character();
-                  return make_token(token_type::tl_start, value);
+           }
      }
      tl3:
      {
           char c = next_character();
-                  return make_token(token_type::tl_plus, value);
-     }
-     tl4:
-     {
-          char c = next_character();
-                  return make_token(token_type::tl_minus, value);
-     }
-     tl5:
-     {
-          char c = next_character();
-         if(c == '4')
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
              {
                   value += c;
                   advance();
-                  goto tl20;
+                  goto tl7;
              }
-         else if(c == '3')
+         else if(c == '1')
              {
                   value += c;
                   advance();
-                  goto tl19;
+                  goto tl5;
              }
          else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl18;
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl15;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
              }
          else if(c == '0')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl4;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl4:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
              }
          else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl16;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -182,31 +424,105 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl5:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl16;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
                   goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -214,31 +530,39 @@ namespace lexer
      tl6:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl27;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -248,31 +572,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -280,31 +604,39 @@ namespace lexer
      tl7:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl28;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -314,31 +646,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -346,31 +678,39 @@ namespace lexer
      tl8:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl29;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -380,31 +720,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -412,31 +752,39 @@ namespace lexer
      tl9:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl30;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -446,31 +794,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -478,31 +826,39 @@ namespace lexer
      tl10:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl31;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -512,31 +868,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -544,31 +900,39 @@ namespace lexer
      tl11:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl32;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -578,31 +942,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -610,31 +974,39 @@ namespace lexer
      tl12:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl33;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -644,31 +1016,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -676,31 +1048,39 @@ namespace lexer
      tl13:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl34;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -710,31 +1090,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -742,102 +1122,215 @@ namespace lexer
      tl14:
      {
           char c = next_character();
-         if(c == '4')
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl20;
+                  goto tl9;
              }
-         else if(c == '3')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl19;
+                  goto tl8;
              }
-         else if(c == '2')
+         else if(!c)
              {
                   value += c;
                   advance();
-                  goto tl18;
-             }
-         else if(c == '0')
-             {
-                  value += c;
-                  advance();
-                  goto tl16;
-             }
-         else if(c == '1')
-             {
-                  value += c;
-                  advance();
-                  goto tl17;
-             }
-         else if(c == '8')
-             {
-                  value += c;
-                  advance();
-                  goto tl24;
-             }
-         else if(c == '9')
-             {
-                  value += c;
-                  advance();
-                  goto tl25;
+                  goto tl35;
              }
          else if(c == '7')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl11;
+             }
+         else if(c == '-')
+             {
+                  value += c;
+                  advance();
+                  goto tl3;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '+')
+             {
+                  value += c;
+                  advance();
+                  goto tl2;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl10;
              }
-         else if(c == '5')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl6;
              }
-            else
-                  return make_token(token_type::tl_int, value);
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
      }
      tl15:
      {
           char c = next_character();
-                  return make_token(token_type::tl_slash, value);
-     }
-     tl16:
-     {
-          char c = next_character();
-         if(c == '4')
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
              {
                   value += c;
                   advance();
-                  goto tl20;
+                  goto tl7;
              }
-         else if(c == '3')
+         else if(c == '1')
              {
                   value += c;
                   advance();
-                  goto tl19;
+                  goto tl5;
              }
          else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl18;
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl36;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
              }
          else if(c == '0')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl4;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl16:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
              }
          else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl27;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -847,31 +1340,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -879,31 +1372,39 @@ namespace lexer
      tl17:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl37;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -913,31 +1414,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -945,31 +1446,39 @@ namespace lexer
      tl18:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl37;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -979,31 +1488,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1011,31 +1520,39 @@ namespace lexer
      tl19:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl38;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1045,31 +1562,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1077,31 +1594,39 @@ namespace lexer
      tl20:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl39;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1111,31 +1636,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1143,31 +1668,39 @@ namespace lexer
      tl21:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl40;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1177,31 +1710,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1209,31 +1742,39 @@ namespace lexer
      tl22:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl41;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1243,31 +1784,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1275,31 +1816,39 @@ namespace lexer
      tl23:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl42;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1309,31 +1858,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1341,31 +1890,39 @@ namespace lexer
      tl24:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl43;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1375,31 +1932,31 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
+         else if(c == '4')
              {
                   value += c;
                   advance();
-                  goto tl23;
+                  goto tl21;
              }
          else if(c == '6')
              {
                   value += c;
                   advance();
-                  goto tl22;
+                  goto tl23;
              }
          else if(c == '5')
              {
                   value += c;
                   advance();
-                  goto tl21;
+                  goto tl22;
              }
             else
                   return make_token(token_type::tl_int, value);
@@ -1407,31 +1964,39 @@ namespace lexer
      tl25:
      {
           char c = next_character();
-         if(c == '4')
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
              {
                   value += c;
                   advance();
                   goto tl20;
              }
-         else if(c == '3')
-             {
-                  value += c;
-                  advance();
-                  goto tl19;
-             }
-         else if(c == '2')
+         else if(c == '1')
              {
                   value += c;
                   advance();
                   goto tl18;
              }
-         else if(c == '0')
+         else if(c == '2')
              {
                   value += c;
                   advance();
-                  goto tl16;
+                  goto tl19;
              }
-         else if(c == '1')
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl44;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
              {
                   value += c;
                   advance();
@@ -1441,34 +2006,2804 @@ namespace lexer
              {
                   value += c;
                   advance();
-                  goto tl24;
+                  goto tl25;
              }
          else if(c == '9')
              {
                   value += c;
                   advance();
-                  goto tl25;
+                  goto tl26;
              }
-         else if(c == '7')
-             {
-                  value += c;
-                  advance();
-                  goto tl23;
-             }
-         else if(c == '6')
-             {
-                  value += c;
-                  advance();
-                  goto tl22;
-             }
-         else if(c == '5')
+         else if(c == '4')
              {
                   value += c;
                   advance();
                   goto tl21;
              }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
             else
                   return make_token(token_type::tl_int, value);
+     }
+     tl26:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl45;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl27:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl28;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl28:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl29;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl29:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl30;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl30:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl31;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl31:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl32;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl32:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl33;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl33:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl34;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl34:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl46;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl35:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl36;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '-')
+             {
+                  value += c;
+                  advance();
+                  goto tl3;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '+')
+             {
+                  value += c;
+                  advance();
+                  goto tl2;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl36:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl47;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl37:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl38;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl38:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl39;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl39:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl40;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl40:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl41;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl41:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl42;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl42:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl43;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl43:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl44;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl44:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl45;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl45:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl48;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl46:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl48;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl47:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl49;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl48:
+     {
+          char c = next_character();
+            if(isspace(c))
+                  return make_token(token_type::tl_int, value);
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl50;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+            else
+                  return make_token(token_type::tl_int, value);
+     }
+     tl49:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl51;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl13;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl50:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl52;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '9')
+             {
+                  value += c;
+                  advance();
+                  goto tl26;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl51:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl53;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl12;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl52:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl54;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '8')
+             {
+                  value += c;
+                  advance();
+                  goto tl25;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl53:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl55;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl11;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl54:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl56;
+             }
+         else if(c == '7')
+             {
+                  value += c;
+                  advance();
+                  goto tl24;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl55:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl10;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl57;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl56:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '6')
+             {
+                  value += c;
+                  advance();
+                  goto tl23;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl58;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl57:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl9;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl59;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl58:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(c == '5')
+             {
+                  value += c;
+                  advance();
+                  goto tl22;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl60;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl59:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl8;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl61;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl60:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '4')
+             {
+                  value += c;
+                  advance();
+                  goto tl21;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl62;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl61:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl63;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl7;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl62:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl64;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+         else if(c == '3')
+             {
+                  value += c;
+                  advance();
+                  goto tl20;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl63:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl65;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl6;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl64:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+         else if(!c)
+             {
+                  value += c;
+                  advance();
+                  goto tl66;
+             }
+         else if(c == '2')
+             {
+                  value += c;
+                  advance();
+                  goto tl19;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl65:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl4;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl5;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+     }
+     tl66:
+     {
+          char c = next_character();
+          if(isspace(c))
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
+         if(c == '0')
+             {
+                  value += c;
+                  advance();
+                  goto tl17;
+             }
+         else if(c == '1')
+             {
+                  value += c;
+                  advance();
+                  goto tl18;
+             }
+           else
+           {
+                   value += c;
+                   advance();
+                   return make_token(token_type::tl_ERROR , value);
+           }
      }
      return make_token(token_type::tl_ERROR, value);}
 

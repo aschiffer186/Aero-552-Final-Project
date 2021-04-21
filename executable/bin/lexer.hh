@@ -9,11 +9,6 @@ namespace lexer
 {
     enum class token_type {
      tl_int,
-     tl_minus,
-     tl_modulo,
-     tl_plus,
-     tl_slash,
-     tl_start,
      tl_EOF,
      tl_ERROR
     };

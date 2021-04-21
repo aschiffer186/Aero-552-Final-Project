@@ -3,5 +3,5 @@ int: [0-9][0-9]*
 plus: +
 minus: -
 start: \*
-slash: \\
+slash: /
 modulo: %

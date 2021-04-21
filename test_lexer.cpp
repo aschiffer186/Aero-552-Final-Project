@@ -14,7 +14,10 @@ int main(int argc, char** argv)
         auto tokens = l.tokenize();
         for(auto tok: tokens)
         {
-            std::cout << tok._M_val << " ";
+            if(tok._M_type == lexer::token_type::tl_ERROR)
+                std::cout << "ERROR: " <<tok._M_val << " ";
+            else
+                std::cout << tok._M_val << " ";
         }
         std::cout << std::endl << std::endl;
     }
