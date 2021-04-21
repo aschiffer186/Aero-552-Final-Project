@@ -47,12 +47,13 @@ namespace final_project
         {
             for(auto& state: _M_accepting_states)
                 state += delta;
+            std::unordered_map<state_t, std::string> temp;
             for(auto it = _M_accepeting_state_labels.begin(); it != _M_accepeting_state_labels.end(); ++it)
             {
-            auto pair = std::make_pair(it->first + delta, it->second);
-            _M_accepeting_state_labels.erase(it);
-            _M_accepeting_state_labels.insert(pair);
+                auto pair = std::make_pair(it->first + delta, it->second);
+                temp.insert(pair);
             }
+            _M_accepeting_state_labels = temp;
             for(auto& row: _M_transitions)
             {
                 for(auto& transition: row)

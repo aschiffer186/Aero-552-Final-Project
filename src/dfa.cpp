@@ -78,9 +78,13 @@ namespace final_project
                             auto reachable_states = it->second;
                             for(auto reachable_state : reachable_states)
                             {
+                                if(reachable_state == ACCEPT)
+                                    continue;
                                 auto closure = epsilon_closure(reachable_state, nfa_table);
                                 for(auto s: closure)
+                                {
                                     t.insert(s);
+                                }
                             }
                         }
                     }

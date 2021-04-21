@@ -22,7 +22,9 @@ namespace final_project
             char c = regex[i];
             if (!is_operator(c))
             {
-                if(c == '\\') //Recognize escaped characters
+                if (c == '$')
+                    c = EPSILON;
+                else if(c == '\\') //Recognize escaped characters
                     c = regex[++i];
                 std::set<char> alphabet;
                 alphabet.insert(c);

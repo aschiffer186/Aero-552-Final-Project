@@ -11,7 +11,7 @@
 #include <iostream>
 #include <functional>
 
-typedef std::map<std::string, bool> testing_map;
+typedef std::map<std::string, int> testing_map;
 typedef std::function<void()> test_t;
 typedef std::vector<test_t> test_list_t;
 
@@ -49,10 +49,10 @@ typedef std::vector<test_t> test_list_t;
     test_listener<test_t> register_##name(&test_##name);\
     void test_##name(){\
         const char* test_name = #name;\
-        bool passed = true;\
+        int passed = 0;\
         std::cout << "Begin " << test_name << std::endl;\
         std::cout << "Test description: " << #desc << std::endl;\
-        test_results[test_name] = true;\
+        test_results[test_name] = 0;\
         try{\
 
 
@@ -67,12 +67,12 @@ typedef std::vector<test_t> test_list_t;
             std::cout << "Exception during test " << test_name << std::endl;\
             std::cout << "Exception message: " << ex.what() << std::endl;\
             std::cout << test_name << " failed!" << std::endl;\
-            passed = false;\
+            test_results[test_name] = -1;\
         } catch (...) {\
             std::cout << "Unknown exception thrown during test: " << test_name << std::endl;\
             std::cout << test_name << " failed!" << std::endl;\
             ++num_failed;\
-            passed = false;\
+            test_results[test_name] = -1;\
         }\
         std::cout << std::endl;\
     }\
@@ -80,14 +80,14 @@ typedef std::vector<test_t> test_list_t;
 //Checks to see if the unit test has passed or failed and prints a message 
 //accordingly. 
 #define PASS_OR_FAIL()\
-    if(passed){\
+    if(passed == 1){\
         std::cout << test_name << " passed!" << std::endl;\
         ++num_passed;\
-        test_results[test_name] = true;\
-    } else {\
+        test_results[test_name] = 1;\
+    } else if (passed == -1) {\
         std::cout << test_name << " failed!" << std::endl;\
         ++num_failed;\
-        test_results[test_name] = false;\
+        test_results[test_name] = -1;\
     }
 
 //Compares the contents of two containters to see if they match. 
@@ -102,14 +102,14 @@ typedef std::vector<test_t> test_list_t;
 #define CONTENT_CHECK(expected, actual)\
     if(expected.size() != actual.size()){\
         std::cout << test_name << ". Expected size: " << expected.size() << ", actual size: " << actual.size() << std::endl;\
-        passed = false;\
+        passed = -1;\
     }\
     for(size_t i = 0; i < std::min(expected.size(), actual.size()); ++i)\
     {\
         if(expected[i] != actual[i])\
         {\
             std::cout << test_name << ". At position " << i << " expected " << expected[i] << ", found " << actual[i] << std::endl;\
-            passed = false;\
+            passed = -1;\
         }\
     }
 
@@ -128,11 +128,13 @@ typedef std::vector<test_t> test_list_t;
         std::cout << "\nInvidual Breakdown" << std::endl;\
         for(const auto& test: test_results)\
         {\
-            bool result = test.second;\
-            if (result)\
+            int result = test.second;\
+            if (result == 1)\
                 std::cout << test.first << ": " << GRN << "pased" << NC << std::endl;\
-            else\
+            else if (result == -1)\
                 std::cout << test.first << ": " << RED << "failed" << NC << std::endl;\
+            else\
+                std::cout << test.first << ": " << "completed, check manually" << std::endl;\
         }\
         if(num_failed > 0)\
             return EXIT_FAILURE;\

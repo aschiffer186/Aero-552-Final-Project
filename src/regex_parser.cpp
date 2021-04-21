@@ -23,6 +23,8 @@ namespace final_project
         std::vector<std::pair<std::string, std::vector<char>>> regex;
         while(getline(_M_in, line))
         {   
+            if(line[0] == '#')
+                continue;
             size_t colon_index = line.find(":");
             std::string label = line.substr(0, colon_index);
             std::string r = line.substr(line.rfind(" ") + 1);

@@ -31,19 +31,23 @@ namespace final_project
         void parser_generator::parse_grammar(std::istream& in)
         {
             std::string line;
-            //Read in terminals
-            getline(in, line);
-            std::stringstream ss(line);
-            std::istream_iterator<std::string> terminal_itr(ss);
-            ++terminal_itr;
-            std::string terminal;
-            for(; !(terminal_itr == std::istream_iterator<std::string>()); ++terminal_itr)
-            {
-                _M_terminals.insert(*terminal_itr);
-            }
             //Read in rules 
             while(getline(in, line))
             {
+                if(line.find("terminals:") != std::string::npos)
+                {
+                    std::stringstream ss(line);
+                    std::istream_iterator<std::string> terminal_itr(ss);
+                    ++terminal_itr;
+                    std::string terminal;
+                    for(; !(terminal_itr == std::istream_iterator<std::string>()); ++terminal_itr)
+                    {
+                        _M_terminals.insert(*terminal_itr);
+                    }
+                    continue;
+                }
+                if (line[0] == '#')
+                    continue;
                 std::stringstream rule_ss(line);
                 std::istream_iterator<std::string> itr(rule_ss);
                 std::string lhs = *itr++;
@@ -193,8 +197,8 @@ namespace final_project
                             auto it = _M_translation_table[start].find(symbol);
                             if (it != _M_translation_table[start].end())
                                 end = it->second;
-                            start = end;
                             rhs_symbols.push_back({symbol, {start, end}});
+                            start = end;
                         }
                         _M_extended_grammar.push_back({lhs, rhs_symbols});
                     }
@@ -206,14 +210,20 @@ namespace final_project
         {
             if(s.first[0] == EPSILON)
                 return true;
+            if (s.first == "$")
+                return true;
             if(is_terminal(s.first))
+            {
+                _M_nullable[s] = false;
                 return false;
+            }
             else
             {
                 bool n = false;
                 for(const auto& rule: _M_extended_grammar)
                 {
-                    n = n || nullable(rule._M_rhs);
+                    if (rule._M_lhs == s)
+                        n = n || nullable(rule._M_rhs);
                 }
                 return n;
             }
@@ -224,41 +234,72 @@ namespace final_project
             bool n = true;
             for (const auto& symb: s)
             {
-                n = n && nullable(symb);
+                n = n && _M_nullable[symb];
             }
             return n;
         }
 
-        std::set<std::string> parser_generator::create_first_set(const parser_generator::extended_rule_t::symbol& s)
+        void parser_generator::compute_nullables()
         {
-            if(s.first[0] == EPSILON)
-                return std::set<std::string>();
-            if(is_terminal(s.first))
-                return {s.first};
-            else
-            {
-                std::set<std::string> first_set;
-                for(const auto& rule: _M_extended_grammar)
+            std::set<extended_rule_t::symbol> non_terminals;
+            std::transform(_M_extended_grammar.begin(), _M_extended_grammar.end(), std::inserter(non_terminals, non_terminals.end()), 
+                [](const extended_rule_t& r)
                 {
-                    if(rule._M_lhs == s)
-                    {
-                        auto set = create_first_set(rule._M_rhs);
-                        first_set.insert(set.begin(), set.end());
-                    }
+                    return r._M_lhs;
+                });
+            for(const auto& nt: non_terminals)
+                _M_nullable[nt] = false;
+            while(true)
+            {
+                bool changed = false;
+                for(const auto& nt: non_terminals)
+                {
+                    bool old = _M_nullable[nt];
+                    _M_nullable[nt] = nullable(nt);
+                    if(_M_nullable[nt] != old)
+                        changed = true;
                 }
-                return first_set;
+                if(!changed)
+                    break;
             }
         }
-        std::set<std::string> parser_generator::create_first_set(const std::vector<parser_generator::extended_rule_t::symbol>& s)
+
+        std::set<std::string> parser_generator::first(const extended_rule_t::symbol& s)
+        {
+            if(is_terminal(s.first))
+                return {s.first};
+            else 
+                return _M_first_sets[s];
+        }
+
+        std::set<std::string> parser_generator::first(const std::vector<parser_generator::extended_rule_t::symbol>& s)
         {
             std::set<std::string> first_set;
 
-            if(s.size() == 1 || !nullable(s.front()))
-                first_set.insert(s.front().first);
+            if(s.size() == 1 || !_M_nullable[s.front()])
+            {
+                if (is_terminal(s.front().first))
+                {
+                    first_set.insert(s.front().first);
+                }
+                else
+                {
+                    auto set = _M_first_sets[s.front()];
+                    first_set.insert(set.begin(), set.end());
+                }
+            }
             else
             {
-                first_set.insert(s.front().first);
-                auto set = create_first_set(std::vector<parser_generator::extended_rule_t::symbol>(s.begin() + 1, s.end()));
+                if (is_terminal(s.front().first))
+                {
+                    first_set.insert(s.front().first);
+                }
+                else
+                {
+                    auto set = _M_first_sets[s.front()];
+                    first_set.insert(set.begin(), set.end());
+                }
+                auto set = first(std::vector<parser_generator::extended_rule_t::symbol>(s.begin() + 1, s.end()));
                 first_set.insert(set.begin(), set.end());
             }
             return first_set;
@@ -266,13 +307,22 @@ namespace final_project
 
         void parser_generator::create_first_sets()
         {
+            std::set<extended_rule_t::symbol> non_terminals;
+            std::transform(_M_extended_grammar.begin(), _M_extended_grammar.end(), std::inserter(non_terminals, non_terminals.end()), 
+                [](const extended_rule_t& r)
+                {
+                    return r._M_lhs;
+                });
+            //Assume all sets are empty
+            for(const auto& nt: non_terminals)
+                _M_first_sets[nt] = {};
             while(true)
             {
                 bool changed = false;
                 for(size_t i = 0; i < _M_extended_grammar.size(); ++i)
                 {
                     auto rule = _M_extended_grammar[i];
-                    auto first_set = create_first_set(rule._M_rhs);
+                    auto first_set = first(rule._M_rhs);
                     auto it = _M_first_sets.find(rule._M_lhs);
                     if (it == _M_first_sets.end())
                     {
@@ -320,14 +370,15 @@ namespace final_project
                         //first non-nullable set
                         while(++it != rule._M_rhs.end())
                         {
-                            auto first_set = create_first_set(*it);
+                            auto first_set = first(*it);
                             for(const auto& elt: first_set)
                             {
                                 if (elt[0] != EPSILON)
                                     follow_set.insert(elt);
                             }
                             //If symbol is nullable, stop taking union of FIRST sets 
-                            if(!nullable(*it))
+                            bool n = (is_terminal(it->first)) ? false : (it->first == "$") ? true : _M_nullable[*it];
+                            if(!n)
                             {
                                 found_non_nullable = true;
                                 break;
@@ -354,7 +405,8 @@ namespace final_project
                             //Check if there are non-nullable symbols after non-terminal
                             while(++it != rule._M_rhs.end())
                             {
-                                if(!nullable(*it))
+                                bool n = (is_terminal(it->first)) ? false : (it->first == "$") ? true : _M_nullable[*it];
+                                if(!n)
                                 {
                                     found_non_nullable = true;
                                     break;
@@ -381,9 +433,9 @@ namespace final_project
             }
         }
 
-        automata::dfa<std::string> parser_generator::create_goto_table(const parser_generator::translation_table_t& table)
+        automata::dfa<std::string> parser_generator::create_goto_table()
         {
-            automata::dfa<std::string>::table_t dfa_table(table.size());
+            automata::dfa<std::string>::table_t dfa_table(_M_translation_table.size());
             for(size_t i = 0; i < _M_translation_table.size(); ++i)
             {   
                 const auto& row = _M_translation_table[i];
@@ -404,22 +456,12 @@ namespace final_project
         {
             automata::dfa<std::string>::table_t dfa_table(_M_translation_table.size());
             //Add in accepting states 
-            for(size_t i = 0; i < sets.size(); ++i)
-            {
-                auto set = sets[i];
-                for(const auto& rule: set._M_rules)
-                {
-                    if (rule._M_lhs == "S" && rule._M_pointer == rule._M_rhs.size())
-                    {
-                        dfa_table[i]["$"] = automata::ACCEPT;
-                    }
-                }
-            }
+           
             //Add in shifts
             for(size_t i = 0; i < _M_translation_table.size(); ++i)
             {
                 const auto& row = _M_translation_table[i];
-                std::unordered_map<std::string, automata::state_t> dfa_row;
+                std::unordered_map<std::string, automata::state_t> dfa_row = dfa_table[i];
                 for(const auto& transition: row)
                 {
                     if(is_terminal(transition.first))
@@ -468,14 +510,75 @@ namespace final_project
                 size_t state = row.first;
                 auto it = std::find(_M_grammar.begin(), _M_grammar.end(), row.second.first);
                 automata::state_t reduce_number = -(it-_M_grammar.begin());
-                std::unordered_map<std::string, automata::state_t> dfa_row;
+                std::unordered_map<std::string, automata::state_t> dfa_row = dfa_table[state];
                 for(const auto& symb: row.second.second)
                 {
                     dfa_row[symb] = reduce_number;
                 }
                 dfa_table[state] = dfa_row;
             }
+
+            for(size_t i = 0; i < sets.size(); ++i)
+            {
+                auto set = sets[i];
+                for(const auto& rule: set._M_rules)
+                {
+                    if (rule._M_lhs == "S" && rule._M_pointer == rule._M_rhs.size() - 1)
+                    {
+                        dfa_table[i]["$"] = automata::ACCEPT;
+                    }
+                }
+            }
             return automata::dfa<std::string>({}, dfa_table);
+        }
+
+        std::pair<automata::dfa<std::string>, automata::dfa<std::string>> parser_generator::create_parse_tables()
+        {
+            auto item_sets = create_item_sets();
+            create_translation_table(item_sets);
+            create_extended_grammar(item_sets);
+            create_first_sets();
+            create_follow_sets();
+            auto goto_table = create_goto_table();
+            auto action_table = create_action_table(item_sets);
+            return std::make_pair(action_table, goto_table);
+        }
+
+        std::ostream& parser_generator::print_tables(std::ostream& os, const automata::dfa<std::string>& action, 
+                    const automata::dfa<std::string>& goto_table)
+        {
+            os << "GOTO Table: \n";
+            auto table = goto_table.get_table();
+            for(size_t i = 0; i < table.size(); ++i)
+            {
+                auto row = table[i];
+                os << "State " << i << ": ";
+                for(const auto& transition: row)
+                {
+                    os << "\t" << transition.first << ": goto state " << transition.second;
+                }
+                os << "\n";
+            }
+            os << "\n\nAction Table: \n";
+            auto transitions = action.get_table();
+            for(size_t i = 0; i < transitions.size(); ++i)
+            {
+                os << "State " << i << ":";
+                const auto& row = transitions[i];
+                for(const auto& transition: row)
+                {
+
+                    os << "\n\t" << transition.first << ": ";
+                    if (transition.second == TP_ACCEPT)
+                        os << "Accept";
+                    else if (transition.second >= 0)
+                        os << "Shift and go to state " << transition.second;
+                    else
+                        os << "Reduce using rule " << -1*transition.second;
+                }
+                os << "\n";
+            }
+            return os;
         }
     } // namespace parser
     

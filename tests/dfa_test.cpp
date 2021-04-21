@@ -31,21 +31,23 @@ using namespace final_project::regex;
 TESTING_SETUP()
 
 BEGIN_TEST(DFA_Constructor_1, Construct DFA from single character)
-    CREATE_NFA("test: a")
+    CREATE_NFA("test: $")
     dfa<char> d = powerset_construction(n);
+    /*
     dfa<char> expected (
         {1},
         {
-            {DFA_TRANSITION('a', 1)}
+            {DFA_TRANSITION('$', 1)}
         }
     );
-    PRINT_DFA(expected, d)
+    */
+    std::cout << d;
     //CONTENT_CHECK(expected_str.str(), actual_str.str())
     //PASS_OR_FAIL()
 END_TEST()
 
 BEGIN_TEST(DFA_Constructor_Alternation, Construct DFA from simple alternation)
-    CREATE_NFA("test: a|b")
+    CREATE_NFA("test: a|$")
     dfa<char> d = powerset_construction(n);
     std::cout << d;
 END_TEST()

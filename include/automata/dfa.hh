@@ -53,7 +53,7 @@ namespace final_project
                     return _M_accepting_states;
                 }
 
-                const  std::unordered_map<state_t, std::string>& get_accepting_labels() const 
+                const std::unordered_map<state_t, std::string>& get_accepting_labels() const 
                 {
                     return _M_accepting_labels;
                 }
@@ -96,17 +96,21 @@ template<typename _Tp>
 inline std::ostream& operator<<(std::ostream& os, const final_project::automata::dfa<_Tp>& d)
 {   
     auto accepting_states = d.get_accepting_states();
-    os << "Accepting states: ";
-    for(size_t i = 0; i < accepting_states.size() - 1; ++i)
-        os << accepting_states[i] << ", ";
-    os << accepting_states.back();
-    auto transitions = d.get_table();
-    os << "\nAccepting labels: {\n";
-    for(const auto& label: d.get_accepting_labels())
-    {
-        os << "{" << label.first << ": " << label.second << "}";
+    if(accepting_states.size() > 0) {
+        os << "Accepting states: ";
+        for(size_t i = 0; i < accepting_states.size() - 1; ++i)
+            os << accepting_states[i] << ", ";
+        os << accepting_states.back();
     }
-    os << "}";
+    auto transitions = d.get_table();
+    if (d.get_accepting_labels().size() > 0) {
+        os << "\nAccepting labels: {\n";
+        for(const auto& label: d.get_accepting_labels())
+        {
+            os << "{" << label.first << ": " << label.second << "}";
+        }
+        os << "}";
+    }
     os << "\nTransition table: \n";
     for(size_t i = 0; i < transitions.size(); ++i)
     {

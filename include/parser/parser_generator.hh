@@ -20,7 +20,7 @@ namespace final_project
     {
         const static char EPSILON = 0;
         const static std::string TP_EOF = "$";
-        const static size_t TP_ACCEPT = std::numeric_limits<size_t>::max();
+        const static automata::state_t TP_ACCEPT = std::numeric_limits<automata::state_t>::max();
 
         class parser_generator
         {
@@ -94,23 +94,48 @@ namespace final_project
                         size_t hash = 0;
                         hash ^= std::hash<std::string>{}(lhs) + 0x9e3779b9 + (hash << 6) + (hash >> 2);
                         hash ^= rhs.first  + 0x9e3779b9 + (hash << 6) + (hash >> 2);
-                        hash ^= rhs.first  + 0x9e3779b9 + (hash << 6) + (hash >> 2);
+                        hash ^= rhs.second  + 0x9e3779b9 + (hash << 6) + (hash >> 2);
                         return hash;
                     } 
                 };
 
                 typedef std::vector<std::unordered_map<std::string, size_t>> translation_table_t;
             public:
+                //Constructs a parser generator that reads in a context free grammar from the specified 
+                //input stream 
+                //
+                //@param in the input stream from which to read the context free grammar
                 explicit parser_generator(std::istream& in);
 
+                //Creates the LALR(1) parse tables
+                std::pair<automata::dfa<std::string>, automata::dfa<std::string>> create_parse_tables();
+
+                static std::ostream& print_tables(std::ostream& os, const automata::dfa<std::string>& action, 
+                    const automata::dfa<std::string>& goto_table);
+            #ifdef DEBUG
+            public:
+            #else
+            private:
+            #endif
+                //Returns true if the string represents a terminal symbol 
+                //@param str the string to evaluate
                 bool is_terminal(const std::string& str) const;
 
-                automata::dfa<std::string> create_goto_table(const translation_table_t& table);
+                //Creates the LALR(1) goto table for the specified grammar
+                //
+                //@return the LALR(1) goto table
+                automata::dfa<std::string> create_goto_table();
 
+                //Creates the LALR(1) action table for the specified grammar 
+                //
+                //@param sets the grammar's item sets 
+                //@return the LALR(1) action table
                 automata::dfa<std::string> create_action_table(const std::vector<parser_generator::item_set_t>& sets);
 
+                //Returns the parser generator's grammar 
+                //
+                //@return the parser generators grammar
                 const std::vector<rule_t>& get_grammar() const;
-            public: //only public for testing purposes 
                 //Creates the item sets for the grammar
                 //@return the grammar's item sets
                 std::vector<item_set_t> create_item_sets();
@@ -129,20 +154,13 @@ namespace final_project
                 //
                 //@param g the extended grammar 
                 void create_first_sets();
-                
-                //Determines the first set for the specified grammar symbol
-                //
-                //@param g the extended grammar 
-                //@param s the grammar symbol 
-                //@return the grammar symbol's first set
-                std::set<std::string> create_first_set(const extended_rule_t::symbol& s);
-                
+                std::set<std::string> first(const extended_rule_t::symbol& s);
                 //Determines the first set for the specified vector of grammar symbols
                 //
                 //@param g the extended grammar 
                 //@param s the vector of grammar symbols 
                 //@return the first set for the vector of grammar symbols
-                std::set<std::string> create_first_set(const std::vector<extended_rule_t::symbol>& s);
+                std::set<std::string> first(const std::vector<extended_rule_t::symbol>& s);
                 
                 //Determines if the specified grammar symbol is nullable that is
                 //if a -> epsilon
@@ -159,6 +177,7 @@ namespace final_project
                 //@return true if the vector of grammar symbols is nullable
                 bool nullable(const std::vector<parser_generator::extended_rule_t::symbol>& s);
 
+                void compute_nullables();
                 //Creates the extended grammar's first sets
                 //
                 //@param g the extended grammar 
@@ -167,7 +186,11 @@ namespace final_project
             private:
                 item_set_t create_item_set(const rule_t& kernel);
                 void parse_grammar(std::istream& in);
+            #ifdef DEBUG
             public: //public for testing ONLY
+            #else
+            private:
+            #endif
                 std::istream& _M_in;
                 //Set of terminals
                 std::set<std::string> _M_terminals;
@@ -177,6 +200,8 @@ namespace final_project
                 std::vector<rule_t> _M_grammar;
                 //Translation table
                 translation_table_t _M_translation_table;
+                //Nullable
+                std::unordered_map<extended_rule_t::symbol, bool, symbol_hash> _M_nullable;
                 //First sets 
                 std::unordered_map<extended_rule_t::symbol, std::set<std::string>, symbol_hash> _M_first_sets;
                 //Follow sets

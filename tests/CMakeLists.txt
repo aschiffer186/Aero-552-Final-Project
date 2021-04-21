@@ -13,5 +13,6 @@ target_link_libraries(dfa_test PRIVATE Compiler)
 add_executable(parser_generator_test parser_generator_test.cpp)
 target_include_directories(parser_generator_test PRIVATE ${FINAL_PROJECT_SOURCE_DIR}/include/)
 target_link_libraries(parser_generator_test PRIVATE Compiler)
+target_compile_definitions(parser_generator_test PRIVATE DEBUG)
 
 #add_test(NAME "Regex Parser Test" COMMAND regex_parser_test)

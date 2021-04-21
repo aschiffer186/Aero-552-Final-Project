@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  20 APR 2021 14:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2020.3.23)  21 APR 2021 13:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -112,68 +112,260 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
-) (c:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+) (c:/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count193
+\lst@gtempboxa=\box48
+\lst@token=\toks24
+\lst@length=\count194
+\lst@currlwidth=\dimen145
+\lst@column=\count195
+\lst@pos=\count196
+\lst@lostspace=\dimen146
+\lst@width=\dimen147
+\lst@newlines=\count197
+\lst@lineno=\count198
+\lst@maxwidth=\dimen148
+ (c:/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
+\c@lstnumber=\count199
+\lst@skipnumbers=\count266
+\lst@framebox=\box49
+) (c:/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/09/10 1.8c listings configuration
+))
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
+ (c:/texlive/2019/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-23 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count193
-\l__pdf_internal_box=\box48
+\l__kernel_color_stack_int=\count267
+\l__pdf_internal_box=\box50
 ) (c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.aux)
 \openout1 = `sigplanconf-template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 38.
  (c:/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) Excluding 'CCSXML' comment.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 93.
+)
+\c@lstlisting=\count268
+ Excluding 'CCSXML' comment.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 94.
  (c:/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 112.
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 119.
  (c:/texlive/2019/texmf-dist/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
 
-Overfull \hbox (0.94592pt too wide) in paragraph at lines 132--146
+Overfull \hbox (0.94592pt too wide) in paragraph at lines 139--153
 [][] 
  []
 
-[1{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+LaTeX Font Info:    Trying to load font information for OML+ptm on input line 157.
+(c:/texlive/2019/texmf-dist/tex/latex/psnfss/omlptm.fd
+File: omlptm.fd 
+)
+LaTeX Font Info:    Font shape `OML/ptm/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 157.
+ [1{c:/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 Non-PDF special ignored!
 <special> papersize=8.5in,11in
 
-] [2
+]
+Underfull \hbox (badness 10000) in paragraph at lines 185--195
 
-] (c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.aux) ) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--262
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 263--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 263--303
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--334
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--334
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--334
+
+ []
+
+[3]
+Overfull \hbox (13.6965pt too wide) in paragraph at lines 338--339
+[]\OT1/ptm/m/n/10 FIRST($\OML/cmm/m/it/10 ^^L$\OT1/ptm/m/n/10 ) = FIRST($\OML/cmm/m/it/10 $\OT1/ptm/m/n/10 ) $\OMS/cmsy/m/n/10 [$ \OT1/ptm/m/n/10 FIRST($\OML/cmm/m/it/10 ^^L$\OT1/ptm/m/n/10 ) if NULLABLE($\OML/cmm/m/it/10 alpha$\OT1/ptm/m/n/10 ) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 341--349
+
+ []
+
+
+Overfull \hbox (0.75282pt too wide) in paragraph at lines 352--353
+[]\OT1/ptm/m/n/10 if $\OML/cmm/m/it/10 N \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 M$ \OT1/ptm/m/n/10 where $\OML/cmm/m/it/10 $ \OT1/ptm/m/n/10 is NUL-LABLE, $\OML/cmm/m/it/10 FOLLOW\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 N\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^R
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 354--367
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--476
+
+ []
+
+[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Underfull \hbox (badness 1472) in paragraph at lines 485--486
+[]\OT1/ptm/m/n/9 Cernera, G., 'Con-vert-ing Reg-u-lar Ex-pres-sions to Post- 
+ []
+
+
+Underfull \hbox (badness 2469) in paragraph at lines 485--486
+\OT1/ptm/m/n/9 expressions-to-postfix-notation-with-the-shunting-yard- 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 493--494
+[]\OT1/ptm/m/n/9 Jackson, S., 'LALR(1) Pars-ing' Avail-able: 
+ []
+
+[6
+
+] (c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.aux
+
+Package natbib Warning: Citation(s) may have changed.
+(natbib)                Rerun to get citations correct.
+
+
+c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.aux:23: Package natbib Error: Bibliography not compatible with author-year citations.
+(natbib)                Press <return> to continue in numerical citation style.
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+\GenericError  ...                                
+                                                  \endgroup 
+\NAT@force@numbers ...BibTeX style, e.g. plainnat}
+                                                  \global \NAT@numberstrue \fi 
+l.23 ...mand\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+Check the bibliography entries for non-compliant syntax,
+or select author-year BibTeX style, e.g. plainnat
+
+)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1923 strings out of 480994
- 25785 string characters out of 5916032
- 279361 words of memory out of 5000000
- 17447 multiletter control sequences out of 15000+600000
- 552707 words of font info for 54 fonts, out of 8000000 for 9000
+ 3558 strings out of 480994
+ 47187 string characters out of 5916032
+ 319406 words of memory out of 5000000
+ 19067 multiletter control sequences out of 15000+600000
+ 554223 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 33i,10n,38p,294b,249s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.pdf" (2 pages, 122680 bytes).
+ 33i,10n,38p,324b,1655s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><c:/texlive/2019/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on "c:/Users/aschi/Dropbox/AERO 552/Final Project/report/sigplanconf-template.pdf" (6 pages, 141011 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
- 43 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
