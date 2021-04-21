@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <stack>
 #include <regex>
+#include <iostream>
 
 namespace final_project
 {
@@ -35,7 +36,54 @@ namespace final_project
 
     std::vector<char> regex_parser::parse_regex(std::string& regex)
     {
+        try 
+        {
         preprocess(regex);
+        } catch (const std::regex_error& e) {
+            auto error = e.code();
+            switch(error)
+            {
+                case std::regex_constants::error_collate:
+                    std::cout << "Collate" << std::endl;
+                    break;
+                case std::regex_constants::error_ctype:
+                    std::cout << "ctype" << std::endl;
+                    break;
+                case std::regex_constants::error_escape:
+                    std::cout << "escape" << std::endl;
+                    break;
+                case std::regex_constants::error_backref:
+                    std::cout << "backref" << std::endl;
+                    break;
+                case std::regex_constants::error_brack:
+                    std::cout << "brack" << std::endl;
+                    break;
+                case std::regex_constants::error_paren:
+                    std::cout << "paren" << std::endl;
+                    break;
+                case std::regex_constants::error_brace:
+                    std::cout << "brace" << std::endl;
+                    break;
+                 case std::regex_constants::error_badbrace:
+                    std::cout << "badbrace" << std::endl;
+                    break;
+                 case std::regex_constants::error_range:
+                    std::cout << "range" << std::endl;
+                    break;
+                 case std::regex_constants::error_space:
+                    std::cout << "space" << std::endl;
+                    break;
+                 case std::regex_constants::error_complexity:
+                    std::cout << "complexity" << std::endl;
+                    break;
+                 case std::regex_constants::error_stack:
+                    std::cout << "stack" << std::endl;
+                    break;
+                default:
+                    std::cout << "other" << std::endl;
+                    break;
+            }
+        }
         std::vector<char> postfix;
         std::stack<char> op_stack;
         for(size_t i = 0; i < regex.size(); ++i)
