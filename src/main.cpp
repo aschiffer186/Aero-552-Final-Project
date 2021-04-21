@@ -50,6 +50,7 @@ int main(int argc, char** argv)
     std::cout << "Select option:\n[1] Generate Lexer\n[2] Generate Parser Tables" << std::endl;
     std::string option;
     std::cin >> option; 
+    std::cout << "C++ version: " << __cplusplus;
     if (option == "2")
         generate_parser_tables();
     else
