@@ -134,6 +134,7 @@ namespace final_project
 
     void regex_parser::preprocess(std::string& regex)
     {
+        /*
         //Replace [0-9]
         std::regex digit_regex("[0-9]");
         std::string digit_replacement = "(0|1|2|3|4|5|6|7|8|9)";
@@ -155,6 +156,8 @@ namespace final_project
         all_replacement += "|" + upper_replacement.substr(1);
         std::string all_replaced;
         std::regex_replace(std::back_inserter(all_replaced),upper_added.begin(), upper_added.end(), all_regex, all_replacement);
+        */
+        std::string all_replaced = regex;
         //Add concatenation operator
         //Cases where concatentation operator should be inserted 
         //  1. Between two tokens e.g. ab -> a?b
